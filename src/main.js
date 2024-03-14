@@ -8,21 +8,31 @@ import { Preloader } from './scenes/Preloader';
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config = {
     type: Phaser.AUTO,
-    width: 1024,
-    height: 768,
+    width: 800,
+    height: 608,
+    backgroundColor: '#9C9C9C',
     parent: 'game-container',
-    backgroundColor: '#028af8',
-    scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH
-    },
     scene: [
+        Game,
         Boot,
         Preloader,
         MainMenu,
-        Game,
         GameOver
-    ]
+    ],
+    scale: {
+        //mode: Phaser.Scale.FIT,
+        //autoCenter: Phaser.Scale.CENTER_BOTH
+        zoom:2,
+    },
+    physics:{
+        default: 'matter',
+        matter: {
+            debug: true,
+            gravity: {y:0}
+        },
+
+    }
+    
 };
 
 export default new Phaser.Game(config);
